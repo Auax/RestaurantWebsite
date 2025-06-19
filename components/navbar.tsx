@@ -3,9 +3,10 @@
 import Link from "next/link"
 import {usePathname} from "next/navigation" // Import usePathname
 import {Button} from "@/components/ui/button"
+import Image from "next/image";
 import {Sheet, SheetContent, SheetTitle, SheetTrigger} from "@/components/ui/sheet"
-import {Menu, UtensilsCrossed} from "lucide-react"
-import {useState, useEffect, useRef} from "react"
+import {Menu} from "lucide-react"
+import {useEffect, useRef, useState} from "react"
 
 // Import GSAP and register ScrollTrigger
 import {gsap} from "gsap"
