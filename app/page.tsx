@@ -232,7 +232,7 @@ export default function HomePage() {
                     className="w-full h-screen min-h-[500px] sm:min-h-[600px] relative text-center text-white overflow-hidden items-center justify-center flex"
                 >
                     <div ref={heroContentRef} className="relative z-10 p-4 sm:p-6">
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight">
+                        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight">
                             Dolce Vita Ristorante
                         </h1>
                         <p className="mt-4 sm:text-xl md:text-lg text-white/80 max-w-2xl mx-auto italic tracking-tight">
@@ -242,14 +242,14 @@ export default function HomePage() {
                         <div ref={heroButtonsContainerRef}
                              className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                             <Button asChild size="lg"
-                                    className="bg-red-400 hover:bg-red-500 text-white text-md px-8 py-6">
+                                    className="bg-red-400 hover:bg-red-500 text-white text-sm sm:text-md px-4 py-2 sm:px-8 sm:py-6">
                                 <Link href="/menu">Ver Menú</Link>
                             </Button>
                             <Button
                                 asChild
                                 variant="outline"
                                 size="lg"
-                                className="border-white text-white hover:bg-white hover:text-red-400 text-md px-8 py-6"
+                                className="border-white text-white hover:bg-white hover:text-red-400 text-sm sm:text-md px-4 py-2 sm:px-8 sm:py-6"
                             >
                                 <Link href="/contacto#reservas">Reservar Mesa</Link>
                             </Button>
@@ -257,7 +257,7 @@ export default function HomePage() {
                     </div>
                 </Parallax>
                 {/* Scroll down label */}
-                <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-white cursor-pointer"
+                <div className="absolute bottom-5 sm:bottom-20 left-1/2 transform -translate-x-1/2 text-white cursor-pointer"
                      onClick={() => {
                          if (aboutSectionRef.current) {
                              aboutSectionRef.current.scrollIntoView({behavior: "smooth"});
