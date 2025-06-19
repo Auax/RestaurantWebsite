@@ -121,7 +121,6 @@ export default function Navbar() {
         <header ref={headerRef} className="top-0 z-50 w-full">
             <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-                    {/* Removed UtensilsCrossed if you intend to only have text. Add it back if needed. */}
                     <span className="font-bold text-xl logo-text">Dolce Vita Ristorante</span>
 
                 </Link>
@@ -141,7 +140,7 @@ export default function Navbar() {
                     <Sheet open={isOpen} onOpenChange={setIsOpen}>
                         <SheetTrigger asChild>
                             {/* Keep the hamburger menu icon color consistent or adjust based on header state if desired */}
-                            <Button variant="outline" size="icon" className="logo-text">
+                            <Button variant="outline" size="icon" className="logo-text hover:bg-white/50 hover:border-white/20">
                                 <Menu className="h-6 w-6"/>
                                 <span className="sr-only">Abrir menú de navegación</span>
                             </Button>
