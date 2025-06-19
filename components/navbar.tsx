@@ -122,8 +122,7 @@ export default function Navbar() {
             <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
                     {/* Removed UtensilsCrossed if you intend to only have text. Add it back if needed. */}
-                    {/*<span className="font-bold text-xl logo-text">Dolce Vita Ristorante</span>*/}
-                    <Image src="/logo.svg" alt="Logo" width={200} height={200}/>
+                    <span className="font-bold text-xl logo-text">Dolce Vita Ristorante</span>
 
                 </Link>
                 <nav className="links-nav-container hidden md:flex gap-6">
