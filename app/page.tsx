@@ -2,15 +2,16 @@
 
 import {useEffect, useRef} from "react";
 import {gsap} from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
 // Import necessary GSAP types
 import type {ScrollTrigger as ScrollTriggerType} from "gsap/ScrollTrigger";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 import {Button} from "@/components/ui/button";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import {MapPin} from "lucide-react";
+import Parallax from "@/components/ui/parallax";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,7 +35,6 @@ export default function HomePage() {
             const heroParagraph = heroContentRef.current.querySelector("p.italic");
             const heroButtons = gsap.utils.toArray<HTMLElement>(heroButtonsContainerRef.current.children);
 
-            // *** CHANGE from() to fromTo() ***
             if (heroTitle) {
                 heroTl.fromTo(heroTitle,
                     {opacity: 0, y: 50}, // From state
@@ -42,7 +42,6 @@ export default function HomePage() {
                 );
             }
 
-            // *** CHANGE from() to fromTo() ***
             if (heroParagraph) {
                 heroTl.fromTo(heroParagraph,
                     {opacity: 0, y: 30}, // From state
@@ -51,7 +50,6 @@ export default function HomePage() {
                 );
             }
 
-            // *** CHANGE from() to fromTo() ***
             if (heroButtons.length > 0) {
                 heroTl.fromTo(heroButtons,
                     {opacity: 0, y: 20}, // From state
@@ -78,21 +76,18 @@ export default function HomePage() {
             const aboutParagraph = aboutElements.querySelector("p");
             const aboutLink = aboutElements.querySelector("a");
 
-            // *** CHANGE from() to fromTo() ***
             if (aboutTitle) aboutTl.fromTo(aboutTitle, {opacity: 0, y: 50}, {
                 opacity: 1,
                 y: 0,
                 duration: 0.8,
                 ease: "power2.out"
             });
-            // *** CHANGE from() to fromTo() ***
             if (aboutParagraph) aboutTl.fromTo(aboutParagraph, {opacity: 0, y: 30}, {
                 opacity: 1,
                 y: 0,
                 duration: 0.8,
                 ease: "power2.out"
             }, "-=0.5");
-            // *** CHANGE from() to fromTo() ***
             if (aboutLink) aboutTl.fromTo(aboutLink, {opacity: 0, y: 20}, {
                 opacity: 1,
                 y: 0,
@@ -127,7 +122,6 @@ export default function HomePage() {
                 }
             });
 
-            // *** CHANGE from() to fromTo() ***
             if (dishesTitle) {
                 dishesTl.fromTo(dishesTitle, {opacity: 0, y: 50}, {
                     opacity: 1,
@@ -136,7 +130,6 @@ export default function HomePage() {
                     ease: "power2.out"
                 });
             }
-            // *** CHANGE from() to fromTo() ***
             if (dishCards.length > 0) {
                 dishesTl.fromTo(dishCards,
                     {opacity: 0, y: 50}, // From state
@@ -167,14 +160,12 @@ export default function HomePage() {
             const ctaParagraphs = gsap.utils.toArray<HTMLParagraphElement>(ctaElements.querySelectorAll("p"));
             const ctaLink = ctaElements.querySelector("a");
 
-            // *** CHANGE from() to fromTo() ***
             if (ctaIcon) ctaTl.fromTo(ctaIcon, { // Targets the MapPin icon
                 opacity: 0, scale: 0.5
             }, {
                 opacity: 1, scale: 1, duration: 0.8, ease: "elastic.out(1, 0.5)" // A bouncy effect for the icon
             });
 
-            // *** CHANGE from() to fromTo() ***
             if (ctaTitle) ctaTl.fromTo(ctaTitle, {opacity: 0, y: 30}, {
                 opacity: 1,
                 y: 0,
@@ -182,14 +173,12 @@ export default function HomePage() {
                 ease: "power2.out"
             }, "-=0.5");
 
-            // *** CHANGE from() to fromTo() ***
             if (ctaParagraphs.length > 0) ctaTl.fromTo(ctaParagraphs, {
                 opacity: 0, y: 20
             }, {
                 opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power2.out"
             }, "-=0.5");
 
-            // *** CHANGE from() to fromTo() ***
             if (ctaLink) ctaTl.fromTo(ctaLink, {opacity: 0, y: 20}, {
                 opacity: 1,
                 y: 0,
@@ -233,40 +222,42 @@ export default function HomePage() {
     return (
         <>
             {/* Hero Section */}
-            <section
-                className="relative h-screen min-h-[500px] sm:min-h-[600px] flex items-center justify-center text-center text-white overflow-hidden">
-                <Image
-                    src="/hero.jpg"
-                    alt="Plato de pizza italiana servido en una mesa"
-                    layout="fill"
-                    objectFit="cover"
-                    className="absolute inset-0 z-0 brightness-[.35]"
-                    priority
-                />
-                <div ref={heroContentRef} className="relative z-10 p-4 sm:p-6">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight">
-                        Dolce Vita Ristorante
-                    </h1>
-                    <p className="mt-4 sm:text-xl md:text-lg text-white/80 max-w-2xl mx-auto italic tracking-tight">
-                        Vive una verdadera experiencia italiana con nuestros platos tradicionales preparados con los
-                        ingredientes más frescos.
-                    </p>
-                    <div ref={heroButtonsContainerRef} className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button asChild size="lg" className="bg-red-400 hover:bg-red-500 text-white text-md px-8 py-6">
-                            <Link href="/menu">Ver Menú</Link>
-                        </Button>
-                        <Button
-                            asChild
-                            variant="outline"
-                            size="lg"
-                            className="border-white text-white hover:bg-white hover:text-red-400 text-md px-8 py-6"
-                        >
-                            <Link href="/contacto#reservas">Reservar Mesa</Link>
-                        </Button>
+            <section>
+                <Parallax
+                    imageSrc="/hero.jpg"
+                    alt="Pizza hero image"
+                    speed={0.45}
+                    overlay="rgba(0,0,0,.4)"
+                    coverGap={false}
+                    className="w-full h-screen min-h-[500px] sm:min-h-[600px] relative text-center text-white overflow-hidden items-center justify-center flex"
+                >
+                    <div ref={heroContentRef} className="relative z-10 p-4 sm:p-6">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight">
+                            Dolce Vita Ristorante
+                        </h1>
+                        <p className="mt-4 sm:text-xl md:text-lg text-white/80 max-w-2xl mx-auto italic tracking-tight">
+                            Vive una verdadera experiencia italiana con nuestros platos tradicionales preparados con los
+                            ingredientes más frescos.
+                        </p>
+                        <div ref={heroButtonsContainerRef}
+                             className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                            <Button asChild size="lg"
+                                    className="bg-red-400 hover:bg-red-500 text-white text-md px-8 py-6">
+                                <Link href="/menu">Ver Menú</Link>
+                            </Button>
+                            <Button
+                                asChild
+                                variant="outline"
+                                size="lg"
+                                className="border-white text-white hover:bg-white hover:text-red-400 text-md px-8 py-6"
+                            >
+                                <Link href="/contacto#reservas">Reservar Mesa</Link>
+                            </Button>
+                        </div>
                     </div>
-                </div>
+                </Parallax>
                 {/* Scroll down label */}
-                <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-white/80 cursor-pointer"
+                <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-white cursor-pointer"
                      onClick={() => {
                          if (aboutSectionRef.current) {
                              aboutSectionRef.current.scrollIntoView({behavior: "smooth"});
@@ -291,7 +282,8 @@ export default function HomePage() {
                 <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
                     <h2 className="text-3xl sm:text-4xl font-bold text-stone-800 mb-6">Dolce Vita Ristorante</h2>
                     <p className="text-md sm:text-lg text-stone-700 max-w-3xl mb-8 mx-auto">
-                        En Dolce Vita Ristorante, cada plato cuenta una historia de tradición, pasión y los ingredientes
+                        En Dolce Vita Ristorante, cada plato cuenta una historia de tradición, pasión y los
+                        ingredientes
                         más
                         frescos. Nuestro objetivo es transportarte a Italia con cada bocado.
                     </p>
@@ -369,17 +361,14 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* Call to Action / Location */}
-            <section ref={ctaSectionRef} className="relative py-16 md:py-24 text-white overflow-hidden">
-                <Image
-                    src="/restaurant.jpg"
-                    alt="Plato de pizza italiana servido en una mesa"
-                    layout="fill"
-                    objectFit="cover"
-                    className="z-0 brightness-[0.1]"
-                    priority
-                />
-                <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <Parallax
+                imageSrc="/restaurant.jpg"
+                alt="Restaurante por fuera"
+                speed={0.45}
+                overlay="rgba(0,0,0,.8)"
+                className="py-16 md:py-24"
+            >
+                <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-white">
                     <MapPin className="h-12 w-12 mx-auto mb-4 text-red-400 lucide-map-pin animate-pulse"/>
                     <h2 className="text-3xl sm:text-4xl font-bold mb-4">Visítanos</h2>
                     <p className="text-md sm:text-lg mb-2 italic">Carrer de Montcada 42, 08003 Barcelona, España</p>
@@ -393,7 +382,8 @@ export default function HomePage() {
                         <Link href="/contacto">Cómo Llegar</Link>
                     </Button>
                 </div>
-            </section>
+            </Parallax>
+
         </>
     );
 }
