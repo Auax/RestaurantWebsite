@@ -140,7 +140,7 @@ export default function Navbar() {
                     <Sheet open={isOpen} onOpenChange={setIsOpen}>
                         <SheetTrigger asChild>
                             {/* Keep the hamburger menu icon color consistent or adjust based on header state if desired */}
-                            <Button variant="outline" size="icon" className="logo-text hover:bg-white/50 hover:border-white/20">
+                            <Button variant="outline" size="icon" className="logo-text hover:bg-white/50 hover:border-white/2pnpm i @vercel/analytics0">
                                 <Menu className="h-6 w-6"/>
                                 <span className="sr-only">Abrir menú de navegación</span>
                             </Button>
